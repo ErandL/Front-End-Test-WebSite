@@ -4,14 +4,6 @@
   box-sizing: border-box;
 }
 
-/* body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
-} */
-
 /*  promotion section  */
 .promotion {
   background: #333;
@@ -96,39 +88,82 @@ nav ul li a {
 }
 
 /* carousel section */
+.carousel-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 35px;
+  margin-top: 1em;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  padding: 5px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.card .img img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+}
+
 .wrapper {
-  margin-top: 1.5em;
-  margin-bottom: 3em;
-  max-width: 1800px;
-  padding: 0 10px;
+  max-width: 1400px;
+  width: 100%;
+  position: relative;
 }
 
 .wrapper i {
-  font-size: 2em;
-  margin-left: 15px;
-  margin-bottom: 10px;
-  color: #333;
+  padding: 2px;
+  position: absolute;
+  top: 2px;
+  right: 5px;
   cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1;
 }
 
 .wrapper i:first-child {
-  margin-left: 0;
+  right: 40px;
 }
 
 .wrapper .carousel {
-  cursor: pointer;
-  overflow: hidden;
-  white-space: nowrap;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-top: 40px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-.carousel img {
-  object-fit: cover;
-  width: calc(577 / 3);
-  margin-left: 1.5em;
+.carousel .card {
+  height: 400px;
+  list-style: none;
+  border: none;
+  scroll-snap-align: start;
 }
 
-.carousel img:first-child {
-  margin-left: 0;
+.card h6 {
+  padding: 10px 0;
+  color: rgba(153, 153, 153, 0.676);
+  text-transform: uppercase;
+}
+
+.carousel .dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel .dragging {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
 /* footer section */
@@ -140,13 +175,12 @@ footer {
 }
 
 @media screen and (max-width: 900px) {
-  .carousel img {
-    width: calc(100% / 2);
-    height: auto;
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
   }
 }
 @media screen and (max-width: 550px) {
-  .carousel img {
-    width: 100%;
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
   }
 }
