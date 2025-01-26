@@ -327,6 +327,11 @@ nav ul li a {
 .arrow {
   cursor: pointer;
   font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.arrow:first-child {
+  margin-right: 10px;
 }
 
 /* footer section */
